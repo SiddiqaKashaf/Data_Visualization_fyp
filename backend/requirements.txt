@@ -1,0 +1,6 @@
+fastapi
+fastapi.middleware.cors
+pydantic
+sqlalchemy
+sqlalchemy.orm
+bcrypt

@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Apply default text colors to the <body> */
+body {
+  @apply text-black dark:text-white;
+}
