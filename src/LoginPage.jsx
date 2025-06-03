@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export default function LoginPage({ onLogin }) {
-  const [name, setName] = useState('');           // only used on signup
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isSignup, setIsSignup] = useState(false);
@@ -17,7 +17,6 @@ export default function LoginPage({ onLogin }) {
       ? 'http://localhost:8000/signup'
       : 'http://localhost:8000/login';
 
-    // Always build FormData
     const formData = new FormData();
     if (isSignup) formData.append('name', name);
     formData.append('email', email);
@@ -36,7 +35,6 @@ export default function LoginPage({ onLogin }) {
       console.log('📨 response data:', data);
 
       if (!res.ok) {
-        // Show error detail or fallback
         const errMsg = data?.detail || data?.message || `Error ${res.status}`;
         alert(errMsg);
         return;
@@ -48,7 +46,6 @@ export default function LoginPage({ onLogin }) {
         return;
       }
 
-      // Login succeeded
       onLogin(data.name, data.email);
       navigate('/upload');
     } catch (err) {
@@ -58,8 +55,8 @@ export default function LoginPage({ onLogin }) {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-20 bg-white/10 p-8 rounded-2xl shadow-lg backdrop-blur-md">
-      <h1 className="text-3xl font-bold text-purple-400 text-center mb-6">
+    <div className="max-w-md mx-auto mt-20 bg-white/10 p-8 rounded-2xl shadow-lg backdrop-blur-md dark:bg-white/10 bg-white">
+      <h1 className="text-3xl font-bold text-purple-500 text-center mb-6 dark:text-purple-400">
         {isSignup ? 'Sign Up' : 'Login'}
       </h1>
       <form onSubmit={handleSubmit} className="space-y-4">
@@ -70,7 +67,7 @@ export default function LoginPage({ onLogin }) {
             required
             value={name}
             onChange={(e) => setName(e.target.value)}
-            className="w-full px-4 py-2 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-purple-400 text-white"
+            className="w-full px-4 py-2 bg-white border border-gray-300 dark:bg-white/10 dark:border-white/20 rounded-lg focus:ring-2 focus:ring-purple-400 text-black dark:text-white"
           />
         )}
         <input
@@ -79,7 +76,7 @@ export default function LoginPage({ onLogin }) {
           required
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          className="w-full px-4 py-2 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-purple-400 text-white"
+          className="w-full px-4 py-2 bg-white border border-gray-300 dark:bg-white/10 dark:border-white/20 rounded-lg focus:ring-2 focus:ring-purple-400 text-black dark:text-white"
         />
         <input
           type="password"
@@ -87,7 +84,7 @@ export default function LoginPage({ onLogin }) {
           required
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          className="w-full px-4 py-2 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-purple-400 text-white"
+          className="w-full px-4 py-2 bg-white border border-gray-300 dark:bg-white/10 dark:border-white/20 rounded-lg focus:ring-2 focus:ring-purple-400 text-black dark:text-white"
         />
         <button
           type="submit"
@@ -96,12 +93,12 @@ export default function LoginPage({ onLogin }) {
           {isSignup ? 'Sign Up' : 'Login'}
         </button>
       </form>
-      <p className="text-center mt-4 text-sm">
+      <p className="text-center mt-4 text-sm text-black dark:text-white">
         {isSignup ? 'Already have an account?' : "Don't have an account?"}{' '}
         <button
           type="button"
           onClick={() => setIsSignup((s) => !s)}
-          className="text-purple-300 underline"
+          className="text-purple-600 dark:text-purple-300 underline"
         >
           {isSignup ? 'Login' : 'Sign Up'}
         </button>

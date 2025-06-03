@@ -5,7 +5,6 @@ import * as XLSX from 'xlsx';
 import Papa from 'papaparse';
 import { ClipLoader } from 'react-spinners';
 import { Link } from 'react-router-dom';
-import ChartTypeSelector from './ChartTypeSelector'; // ✅
 
 
 export function UploadDataPage({ setParsedData, setColumnNames }) {
